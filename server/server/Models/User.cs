@@ -1,6 +1,5 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using System.Text.Json.Serialization;
 
 namespace server.Models
 {
@@ -10,11 +9,10 @@ namespace server.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; } = string.Empty;
-
         [BsonElement("name")]
-        public string name { get; set; } = string.Empty;
-
-        public List<string>? gameIds { get; set; } = null!;
+        public string Name { get; set; } = string.Empty;
+        [BsonElement("games")]
+        public List<Game>? Games { get; set; } = new List<Game>();
 
     }
 }

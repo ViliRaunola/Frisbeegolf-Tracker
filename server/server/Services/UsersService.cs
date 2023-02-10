@@ -29,18 +29,25 @@ namespace server.Services
             return await _userCollection.Find(new BsonDocument()).ToListAsync();
         }
 
+        public async Task<List<User>> GetUserAsync(string id)
+        {
+            FilterDefinition<User> filter = Builders<User>.Filter.Eq("Id", id);
+            return await _userCollection.Find(filter).ToListAsync();
+        }
+
         public async Task CreateAsync(User user)
         {
             await _userCollection.InsertOneAsync(user);
             return;
         }
 
-        public async Task AddToGamesAsync(string id, string gameId)
+        public async Task UpdateUserGame(string id, Game game)
         {
             FilterDefinition<User> filter = Builders<User>.Filter.Eq("Id", id);
-            UpdateDefinition<User> update = Builders<User>.Update.AddToSet<string>("gameIds", gameId);
+            UpdateDefinition<User> update = Builders<User>.Update.AddToSet<Game>("games", game);
             await _userCollection.UpdateOneAsync(filter, update);
         }
+        // await _userCollection.ReplaceOneAsync(filter, user, new ReplaceOptions { IsUpsert = true });
 
         public async Task DeleteAsync(string id)
         {

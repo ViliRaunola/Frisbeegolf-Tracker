@@ -21,6 +21,12 @@ namespace server.Controllers
             return await _mongoDBService.GetAsync();
         }
 
+        [HttpGet("{id}")]
+        public async Task<List<User>> Get(string id)
+        {
+            return await _mongoDBService.GetUserAsync(id);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] User user) 
         {
@@ -29,9 +35,9 @@ namespace server.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> AddToGames(string id, [FromBody] string gameId)
+        public async Task<IActionResult> AddToGames(string id, [FromBody] Game game)
         {
-            await _mongoDBService.AddToGamesAsync(id, gameId);
+            await _mongoDBService.UpdateUserGame(id, game);
             return NoContent();
         }
 
