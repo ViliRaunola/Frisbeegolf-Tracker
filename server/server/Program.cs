@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using MongoDB.Driver;
 using server.Models;
 using server.Services;
@@ -12,7 +13,26 @@ builder.Services.AddControllers(options => {
 builder.Services.Configure<UsersDatabaseSettings>(
     builder.Configuration.GetSection("MongoDatabase"));
 
+builder.Services.Configure<MapsDatabaseSettings>(
+    builder.Configuration.GetSection("MongoDatabase"));
+
 builder.Services.AddSingleton<UsersService>();
+builder.Services.AddSingleton<MapsService>();
+
+
+//builder.Services.AddAuthentication(options =>
+//{
+//    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+//})
+//    .AddCookie(options =>
+//    {
+//        options.LoginPath = "/account/google-login";
+//    })
+//    .AddGoogle(options =>
+//    {
+//        options.ClientId = "";
+//        options.ClientSecret = "";
+//    });
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -33,5 +53,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+//app.UseAuthentication();
 
 app.Run();

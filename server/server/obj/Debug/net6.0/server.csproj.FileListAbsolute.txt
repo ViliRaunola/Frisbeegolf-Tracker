@@ -43,3 +43,4 @@ G:\Opiskelu\Omia Projekteja\frisbee app\server\server\obj\Debug\net6.0\refint\se
 G:\Opiskelu\Omia Projekteja\frisbee app\server\server\obj\Debug\net6.0\server.pdb
 G:\Opiskelu\Omia Projekteja\frisbee app\server\server\obj\Debug\net6.0\server.genruntimeconfig.cache
 G:\Opiskelu\Omia Projekteja\frisbee app\server\server\obj\Debug\net6.0\ref\server.dll
+G:\Opiskelu\Omia Projekteja\frisbee app\server\server\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.Google.dll

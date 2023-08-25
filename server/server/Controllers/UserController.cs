@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using server.Services;
 using server.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace server.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class UserController: ControllerBase
@@ -34,7 +36,7 @@ namespace server.Controllers
             return CreatedAtAction(nameof(Get), new { id = user.Id }, user);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("game/{id}")]
         public async Task<IActionResult> AddToGames(string id, [FromBody] Game game)
         {
             await _mongoDBService.UpdateUserGame(id, game);
