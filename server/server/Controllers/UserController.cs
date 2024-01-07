@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace server.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class UserController: ControllerBase
@@ -20,6 +20,8 @@ namespace server.Controllers
         [HttpGet]
         public async Task<List<User>> Get() 
         {
+            Console.WriteLine("Here2");
+            Console.WriteLine(HttpContext.Items["User"]);
             return await _mongoDBService.GetAsync();
         }
 

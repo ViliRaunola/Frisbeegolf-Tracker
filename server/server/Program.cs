@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using MongoDB.Driver;
+using server.Middlewares;
 using server.Models;
 using server.Services;
 
@@ -38,6 +39,7 @@ builder.Services.AddSingleton<MapsService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//builder.Services.AddScoped<TokenCheckMiddleware>();
 
 var app = builder.Build();
 
@@ -50,10 +52,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+//app.UseAuthorization();
+
+app.UseMiddleware<TokenCheckMiddleware>();
 
 app.MapControllers();
 
 //app.UseAuthentication();
-
 app.Run();

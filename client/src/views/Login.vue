@@ -21,11 +21,24 @@ const callback = (response) => {
         console.log("Something went wrong")
         userData.setIsAuthenticated(false);
     }else if(response.clientId) {
-        const userDecodedData = decodeCredential(response.credential)
-        sessionStorage.setItem("userToken", response.credential)
+
+        console.log(response);
+        const userDecodedData = decodeCredential(response.credential);
+
+        console.log(userDecodedData);
+
+        sessionStorage.setItem("userToken", response.credential);
         userData.setIsAuthenticated(true);
-        userData.setName(userDecodedData.given_name, userDecodedData.family_name)
-        router.push('/')
+        userData.setName(userDecodedData.given_name, userDecodedData.family_name);
+
+        // fetch('http://localhost:5236/api/User', {
+        //     method: 'GET',
+        // })
+        //     .then(response => {
+        //         response.json().then(res => console.log(res))
+        //     })
+
+        router.push('/');
     }
 }
 </script>

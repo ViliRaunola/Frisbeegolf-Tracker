@@ -44,3 +44,11 @@ G:\Opiskelu\Omia Projekteja\frisbee app\server\server\obj\Debug\net6.0\server.pd
 G:\Opiskelu\Omia Projekteja\frisbee app\server\server\obj\Debug\net6.0\server.genruntimeconfig.cache
 G:\Opiskelu\Omia Projekteja\frisbee app\server\server\obj\Debug\net6.0\ref\server.dll
 G:\Opiskelu\Omia Projekteja\frisbee app\server\server\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.Google.dll
+G:\Opiskelu\Omia Projekteja\frisbee app\server\server\bin\Debug\net6.0\Google.Apis.dll
+G:\Opiskelu\Omia Projekteja\frisbee app\server\server\bin\Debug\net6.0\Google.Apis.Auth.PlatformServices.dll
+G:\Opiskelu\Omia Projekteja\frisbee app\server\server\bin\Debug\net6.0\Google.Apis.Auth.dll
+G:\Opiskelu\Omia Projekteja\frisbee app\server\server\bin\Debug\net6.0\Google.Apis.Core.dll
+G:\Opiskelu\Omia Projekteja\frisbee app\server\server\bin\Debug\net6.0\Newtonsoft.Json.dll
+G:\Opiskelu\Omia Projekteja\frisbee app\server\server\bin\Debug\net6.0\System.CodeDom.dll
+G:\Opiskelu\Omia Projekteja\frisbee app\server\server\bin\Debug\net6.0\System.Management.dll
+G:\Opiskelu\Omia Projekteja\frisbee app\server\server\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Management.dll

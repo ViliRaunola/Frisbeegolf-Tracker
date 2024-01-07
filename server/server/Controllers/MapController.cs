@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace server.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class MapController : ControllerBase
