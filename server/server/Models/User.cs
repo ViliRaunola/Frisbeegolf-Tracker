@@ -10,6 +10,9 @@ namespace server.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; } = string.Empty;
 
+        [BsonElement("subject")]
+        public string Subject { get; set; } = string.Empty;
+
         [BsonElement("name")]
         public string Name { get; set; } = string.Empty;
 

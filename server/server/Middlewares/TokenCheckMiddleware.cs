@@ -28,22 +28,17 @@ namespace server.Middlewares
                 {
                     string token = authHeader.ToString().Remove(0, 7);
                     GoogleJsonWebSignature.Payload payload = await GoogleJsonWebSignature.ValidateAsync(token);
-
+                    Console.WriteLine(payload);
                     if (payload != null)
                     {
-                        Console.WriteLine(payload);
-                        context.Items["User"] = payload;
-                    }
-
-                    Console.WriteLine("Here");
+                        context.Items["User"] = payload.Subject;
+                    }  
                 }
-                System.Diagnostics.Debug.WriteLine("Here");
-
                 await _next(context);
             }
             catch(System.Exception ex) 
             {
-                Console.WriteLine("invalid google token");
+                Console.WriteLine("Invalid google token");
             }
            
         }

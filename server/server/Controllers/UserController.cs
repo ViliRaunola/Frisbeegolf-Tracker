@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using server.Services;
 using server.Models;
 using Microsoft.AspNetCore.Authorization;
+using Google.Apis.Auth;
+using Microsoft.AspNetCore.Cors;
 
 namespace server.Controllers
 {
@@ -20,7 +22,6 @@ namespace server.Controllers
         [HttpGet]
         public async Task<List<User>> Get() 
         {
-            Console.WriteLine("Here2");
             Console.WriteLine(HttpContext.Items["User"]);
             return await _mongoDBService.GetAsync();
         }
@@ -34,6 +35,7 @@ namespace server.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] User user) 
         {
+            Console.WriteLine(user);
             await _mongoDBService.CreateAsync(user);
             return CreatedAtAction(nameof(Get), new { id = user.Id }, user);
         }

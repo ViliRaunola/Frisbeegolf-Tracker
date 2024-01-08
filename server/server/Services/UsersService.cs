@@ -3,6 +3,7 @@ using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace server.Services
 {
@@ -37,7 +38,11 @@ namespace server.Services
 
         public async Task CreateAsync(User user)
         {
-            await _userCollection.InsertOneAsync(user);
+            bool exists = await _userCollection.Find(_ => _.Subject == user.Subject).AnyAsync();
+            // Using the Google's provided "Subject" id to make sure that user can register only once. 
+            if (!exists) {
+                await _userCollection.InsertOneAsync(user);
+            }
             return;
         }
 
