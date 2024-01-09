@@ -32,8 +32,8 @@ const callback = async (response) => {
             name: userDecodedData.given_name + ' ' + userDecodedData.family_name
         }
 
-
-        const fetchResponse = await fetch('http://localhost:5236/api/User', {
+        // Creating a new user to the server if one doesn't exist yet.
+        const fetchResponse = await fetch(process.env.VUE_APP_API_ADDRESS + '/api/User', {
             method: 'POST',
             headers:
                 {
@@ -42,9 +42,11 @@ const callback = async (response) => {
                 },
             body: JSON.stringify(userDataToSend)
         });
-        const data = await fetchResponse.json();
-        console.log(data);
 
+        const data = await fetchResponse.json();
+        if(data.subject != null){
+            userData.setSubject(data.subject)
+        }
         router.push('/');
     }
 }

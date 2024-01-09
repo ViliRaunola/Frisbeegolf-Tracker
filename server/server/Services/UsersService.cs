@@ -30,9 +30,9 @@ namespace server.Services
             return await _userCollection.Find(new BsonDocument()).ToListAsync();
         }
 
-        public async Task<List<User>> GetUserAsync(string id)
+        public async Task<List<User>> GetUserAsync(string subject)
         {
-            FilterDefinition<User> filter = Builders<User>.Filter.Eq("Id", id);
+            FilterDefinition<User> filter = Builders<User>.Filter.Eq("Subject", subject);
             return await _userCollection.Find(filter).ToListAsync();
         }
 
@@ -46,9 +46,9 @@ namespace server.Services
             return;
         }
 
-        public async Task UpdateUserGame(string id, Game game)
+        public async Task UpdateUserGame(string sub, Game game)
         {
-            FilterDefinition<User> filter = Builders<User>.Filter.Eq("Id", id);
+            FilterDefinition<User> filter = Builders<User>.Filter.Eq("Subject", sub);
             UpdateDefinition<User> update = Builders<User>.Update.AddToSet<Game>("games", game);
             await _userCollection.UpdateOneAsync(filter, update);
         }

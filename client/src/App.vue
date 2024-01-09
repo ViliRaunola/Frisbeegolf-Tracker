@@ -2,10 +2,13 @@
   <span v-if="userData.isAuthenticated">
     <SideBar />
   </span>
-  <router-view> </router-view>
+  <Suspense>
+    <router-view> </router-view>
+  </Suspense>
 </template>
 
 <script>
+import { Suspense } from "vue";
 import SideBar from "./components/sidebar/SideBar.vue"
 import { sideBardWidth } from "./components/sidebar/state";
 import { useUserStore } from "./stores/user"
@@ -13,8 +16,9 @@ import { useUserStore } from "./stores/user"
 export default {
   name: 'App',
   components: {
-    SideBar
-  },
+    SideBar,
+    Suspense
+},
   setup() {
     const userData = useUserStore();
     return {sideBardWidth, userData}

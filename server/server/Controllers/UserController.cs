@@ -26,10 +26,11 @@ namespace server.Controllers
             return await _mongoDBService.GetAsync();
         }
 
-        [HttpGet("{id}")]
-        public async Task<List<User>> Get(string id)
+        [HttpGet("{sub}")]
+        public async Task<List<User>> Get(string sub)
         {
-            return await _mongoDBService.GetUserAsync(id);
+            // TODO: Add a check that the user can only access their own data
+            return await _mongoDBService.GetUserAsync(sub);
         }
 
         [HttpPost]
@@ -40,10 +41,10 @@ namespace server.Controllers
             return CreatedAtAction(nameof(Get), new { id = user.Id }, user);
         }
 
-        [HttpPut("game/{id}")]
-        public async Task<IActionResult> AddToGames(string id, [FromBody] Game game)
+        [HttpPut("game/{sub}")]
+        public async Task<IActionResult> AddToGames(string sub, [FromBody] Game game)
         {
-            await _mongoDBService.UpdateUserGame(id, game);
+            await _mongoDBService.UpdateUserGame(sub, game);
             return NoContent();
         }
 

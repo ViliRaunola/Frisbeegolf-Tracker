@@ -18,6 +18,7 @@ namespace server.Middlewares
             _next = next;
         }
 
+        //TODO: should check more than just the token. Check Google login API documentation for all of the checks.
         public async Task InvokeAsync(HttpContext context)
         {
             try 

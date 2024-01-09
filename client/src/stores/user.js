@@ -11,6 +11,8 @@ export const useUserStore = defineStore("userData", {
     isAuthenticated: isLoggedIn,
     firstName: "",
     lastName: "",
+    subject: "",
+    games: [],
   }),
   actions: {
     setIsAuthenticated(boolean) {
@@ -19,6 +21,12 @@ export const useUserStore = defineStore("userData", {
     setName(firstName, lastName) {
       this.firstName = firstName;
       this.lastName = lastName;
+    },
+    setSubject(subject) {
+      this.subject = subject;
+    },
+    setGames(games) {
+      this.games = games;
     },
   },
 });
