@@ -17,6 +17,16 @@ import PastGames from "./views/PastGames.vue";
 import Login from "./views/Login.vue";
 import vue3GoogleLogin from "vue3-google-login";
 import { createPinia } from "pinia";
+// Vuetify
+import "vuetify/styles";
+import { createVuetify } from "vuetify";
+import * as components from "vuetify/components";
+import * as directives from "vuetify/directives";
+
+const vuetify = createVuetify({
+  components,
+  directives,
+});
 
 library.add(
   faAnglesLeft,
@@ -81,10 +91,14 @@ router.beforeEach((to, from, next) => {
 });
 const pinia = createPinia();
 const app = createApp(App);
-app.use(pinia);
 
 app.use(vue3GoogleLogin, {
   clientId: process.env.VUE_APP_GOOGLE_CLIENT_ID,
 });
 
-app.component("font-awesome-icon", FontAwesomeIcon).use(router).mount("#app");
+app
+  .component("font-awesome-icon", FontAwesomeIcon)
+  .use(router)
+  .use(vuetify)
+  .use(pinia)
+  .mount("#app");

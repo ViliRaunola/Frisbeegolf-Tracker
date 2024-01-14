@@ -15,10 +15,12 @@
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "core-js": "^3.8.3",
     "font-awesome": "^4.7.0",
+    "moment": "^2.30.1",
     "pinia": "^2.1.6",
     "vue": "^3.2.13",
     "vue-router": "^4.2.4",
-    "vue3-google-login": "^2.0.20"
+    "vue3-google-login": "^2.0.20",
+    "vuetify": "^3.4.10"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

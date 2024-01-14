@@ -7,10 +7,12 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import { useUserStore } from "../stores/user"
+import { useMapsStore } from '@/stores/maps';
 import { decodeCredential } from 'vue3-google-login'
 
 const router = useRouter();
 const userData = useUserStore();
+const mapData = useMapsStore();
 
 if(sessionStorage.getItem("userToken")){
     router.push('/');
@@ -21,7 +23,6 @@ const callback = async (response) => {
         console.log("Something went wrong")
         userData.setIsAuthenticated(false);
     }else if(response.clientId) {
-        console.log(response);
         const userDecodedData = decodeCredential(response.credential);
         sessionStorage.setItem("userToken", response.credential);
         userData.setIsAuthenticated(true);
@@ -46,7 +47,10 @@ const callback = async (response) => {
         const data = await fetchResponse.json();
         if(data.subject != null){
             userData.setSubject(data.subject)
+            await userData.fetchUserGames();
+            await mapData.fetchMaps();
         }
+
         router.push('/');
     }
 }

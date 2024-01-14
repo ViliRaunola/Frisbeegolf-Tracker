@@ -13,6 +13,7 @@ import SideBar from "./components/sidebar/SideBar.vue"
 import { sideBardWidth } from "./components/sidebar/state";
 import { useUserStore } from "./stores/user"
 
+
 export default {
   name: 'App',
   components: {

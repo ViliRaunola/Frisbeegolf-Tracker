@@ -28,5 +28,24 @@ export const useUserStore = defineStore("userData", {
     setGames(games) {
       this.games = games;
     },
+    async fetchUserGames() {
+      try {
+        let fetchResponse = await fetch(
+          process.env.VUE_APP_API_ADDRESS + "/api/User/" + this.subject,
+          {
+            method: "GET",
+            headers: {
+              Authorization: "Bearer" + sessionStorage.getItem("userToken"),
+            },
+          }
+        );
+        let data = await fetchResponse.json();
+        if (data[0].games !== null) {
+          this.games = data[0].games;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
 });
