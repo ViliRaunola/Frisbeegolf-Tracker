@@ -1,24 +1,39 @@
 <template>
-  <div>Starting menu of a new game</div>
-  <v-container>
-    <v-select
-      label="Select"
-      :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
-    ></v-select>
-  </v-container>
+  <div class="page-container">
+    <div>Starting menu of a new game</div>
+    <template v-if="!isMapSelected"
+      ><LocationSelection @selected-map-update="onSelectedMapUpdate"
+    /></template>
+  </div>
 </template>
 
 <script>
-// import { useUserStore } from '@/stores/user';
-// import { useMapsStore } from '@/stores/maps';
+import { useUserStore } from '@/stores/user';
+import { useMapsStore } from '@/stores/maps';
+import LocationSelection from './LocationSelection.vue';
+import { ref } from 'vue';
 
 export default {
+  components: { LocationSelection },
     setup() {
-        // const userData = useUserStore();
-        // const mapData = useMapsStore();
-    }
+        const userData = useUserStore();
+        const mapData = useMapsStore();
+        let selectedMap;
+        let isMapSelected = ref(false);
 
+        return {userData, mapData, selectedMap, isMapSelected}
+    },
+    methods: {
+      onSelectedMapUpdate(newValue){
+        this.selectedMap = newValue;
+        this.isMapSelected = !this.isMapSelected;
+      }
+    },
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.page-container{
+  margin: 0 15rem 0 15rem;
+}
+</style>
