@@ -27,7 +27,8 @@ namespace server.Middlewares
 
                 if (authHeader != null)
                 {
-                    string token = authHeader.ToString().Remove(0, 7);
+                    string token = authHeader.ToString().Remove(0, 6);
+                    Console.WriteLine(authHeader.ToString());
                     GoogleJsonWebSignature.Payload payload = await GoogleJsonWebSignature.ValidateAsync(token);
                     Console.WriteLine(payload);
                     if (payload != null)

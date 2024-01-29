@@ -28,13 +28,16 @@ const callback = async (response) => {
         userData.setIsAuthenticated(true);
         userData.setName(userDecodedData.given_name, userDecodedData.family_name);
 
+        console.log(response.credential)
+        console.log(sessionStorage.getItem("userToken"))
         const userDataToSend = {
             subject: userDecodedData.sub,
             name: userDecodedData.given_name + ' ' + userDecodedData.family_name
         }
 
         // Creating a new user to the server if one doesn't exist yet.
-        const fetchResponse = await fetch(process.env.VUE_APP_API_ADDRESS + '/api/User', {
+
+            const fetchResponse = await fetch(process.env.VUE_APP_API_ADDRESS + '/api/User', {
             method: 'POST',
             headers:
                 {
@@ -50,8 +53,8 @@ const callback = async (response) => {
             await userData.fetchUserGames();
             await mapData.fetchMaps();
         }
-
         router.push('/');
+
     }
 }
 </script>
