@@ -37,14 +37,14 @@ const callback = async (response) => {
 
         // Creating a new user to the server if one doesn't exist yet.
 
-            const fetchResponse = await fetch(process.env.VUE_APP_API_ADDRESS + '/api/User', {
-            method: 'POST',
-            headers:
-                {
-                'Authorization': 'Bearer' + sessionStorage.getItem("userToken"),
-                'Content-Type': 'application/json'
-                },
-            body: JSON.stringify(userDataToSend)
+        const fetchResponse = await fetch(process.env.VUE_APP_API_ADDRESS + '/api/User', {
+        method: 'POST',
+        headers:
+            {
+            'Authorization': 'Bearer' + sessionStorage.getItem("userToken"),
+            'Content-Type': 'application/json'
+            },
+        body: JSON.stringify(userDataToSend)
         });
 
         const data = await fetchResponse.json();

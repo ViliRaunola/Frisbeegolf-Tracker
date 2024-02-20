@@ -1,5 +1,5 @@
 <template>
-  <div>New Game Starts Here</div>
+  <div :class="['text-h3', 'pa-2']">New Game Starts Here</div>
   <NewGameStart></NewGameStart>
 </template>
 

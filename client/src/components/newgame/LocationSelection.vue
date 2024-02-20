@@ -19,10 +19,21 @@ import { useUserStore } from '@/stores/user';
 import { useMapsStore } from '@/stores/maps';
 
 export default {
-    setup() {
+    setup(props, context) {
         const userData = useUserStore();
         const mapData = useMapsStore();
 
+        if(userData.currentGameMapId !== "") {
+          skip_location_selection();
+        }
+
+        function skip_location_selection() {
+          mapData.maps.forEach(map => {
+            if(map.id === userData.currentGameMapId)
+              context.emit('selected-map-update', map)
+        });
+
+      }
 
         return {userData, mapData}
     },
@@ -32,12 +43,14 @@ export default {
         this.$refs.form.validate();
         console.log(this.selectedField)
         this.$emit('selected-map-update', this.selectedField)
-      }
+      },
+
     },
 
     data: () => ({
       valid: false,
       value: '',
+      selectedField: null,
       requiredRule: [
         v => !!v || 'Select the location first',
       ],

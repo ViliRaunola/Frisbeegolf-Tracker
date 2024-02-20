@@ -13,6 +13,8 @@ export const useUserStore = defineStore("userData", {
     lastName: "",
     subject: "",
     games: [],
+    currentGameScores: [],
+    currentGameMapId: "",
   }),
   actions: {
     setIsAuthenticated(boolean) {
@@ -27,6 +29,15 @@ export const useUserStore = defineStore("userData", {
     },
     setGames(games) {
       this.games = games;
+    },
+    setCurrentGameMapId(id) {
+      this.currentGameMapId = id;
+    },
+    setCurrentGameScore(index, score) {
+      this.currentGameScores[index] = score;
+    },
+    nullCurrentGameScore() {
+      this.currentGameScores = [];
     },
     async fetchUserGames() {
       try {

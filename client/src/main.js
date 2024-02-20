@@ -9,6 +9,8 @@ import {
   faPlus,
   faCalendarDays,
   faRightFromBracket,
+  faAngleLeft,
+  faAngleRight
 } from "@fortawesome/free-solid-svg-icons";
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "./views/Home.vue";
@@ -22,6 +24,9 @@ import "vuetify/styles";
 import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
+import '@mdi/font/css/materialdesignicons.css'
+
+
 
 const vuetify = createVuetify({
   components,
@@ -34,7 +39,9 @@ library.add(
   faHouse,
   faPlus,
   faCalendarDays,
-  faRightFromBracket
+  faRightFromBracket,
+  faAngleLeft,
+  faAngleRight,
 );
 
 const router = createRouter({
